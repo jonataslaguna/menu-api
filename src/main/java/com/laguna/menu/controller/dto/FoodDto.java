@@ -9,7 +9,7 @@ public record FoodDto(
     Long id,
     String name,
     String imageUrl,
-    Integer price
+    Double price
 ) {
 
   /**
