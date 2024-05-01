@@ -5,6 +5,9 @@ import com.laguna.menu.repository.FoodRepository;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
+/**
+ * The type Food service.
+ */
 @Service
 public class FoodService  {
   private final FoodRepository foodRepository;
@@ -13,7 +16,7 @@ public class FoodService  {
     this.foodRepository = foodRepository;
   }
 
-  public List<Food> getAll(){
+  public List<Food> getAll() {
     return foodRepository.findAll();
   }
 }

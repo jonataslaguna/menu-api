@@ -6,8 +6,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * The type Food.
+ */
+@Entity
 @Table(name = "foods")
-@Entity(name = "foods")
 public class Food {
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
