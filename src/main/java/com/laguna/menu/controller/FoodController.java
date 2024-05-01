@@ -1,5 +1,6 @@
 package com.laguna.menu.controller;
 
+import com.laguna.menu.controller.dto.FoodDto;
 import com.laguna.menu.entity.Food;
 import com.laguna.menu.service.FoodService;
 import java.util.List;
@@ -7,9 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * The type Food controller.
- */
 @RestController
 @RequestMapping("/food")
 public class FoodController {
@@ -20,7 +18,10 @@ public class FoodController {
   }
 
   @GetMapping
-  public List<Food> getAll() {
-    return foodService.getAll();
+  public List<FoodDto> getAll() {
+    List<Food> foods = foodService.getAll();
+    return foods.stream()
+        .map(FoodDto::fromEntity)
+        .toList();
   }
 }
