@@ -19,4 +19,8 @@ public class FoodService  {
   public List<Food> getAll() {
     return foodRepository.findAll();
   }
+
+  public Food saveFood(Food food) {
+    return foodRepository.save(food);
+  }
 }
