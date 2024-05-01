@@ -16,7 +16,15 @@ public class Food {
   private Long id;
   private String name;
   private String imageUrl;
-  private Integer price;
+  private Double price;
+
+  public Food() {}
+
+  public Food(String name, String imageUrl, Double price) {
+    this.name = name;
+    this.imageUrl = imageUrl;
+    this.price = price;
+  }
 
   public Long getId() {
     return id;
@@ -42,11 +50,11 @@ public class Food {
     this.imageUrl = imageUrl;
   }
 
-  public Integer getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public void setPrice(Integer price) {
+  public void setPrice(Double price) {
     this.price = price;
   }
 }
