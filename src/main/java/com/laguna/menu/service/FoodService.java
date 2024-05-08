@@ -3,6 +3,7 @@ package com.laguna.menu.service;
 import com.laguna.menu.entity.Food;
 import com.laguna.menu.repository.FoodRepository;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class FoodService  {
   private final FoodRepository foodRepository;
-
+  @Autowired
   public FoodService(FoodRepository foodRepository) {
     this.foodRepository = foodRepository;
   }

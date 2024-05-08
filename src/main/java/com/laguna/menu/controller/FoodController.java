@@ -5,7 +5,9 @@ import com.laguna.menu.controller.dto.FoodDto;
 import com.laguna.menu.entity.Food;
 import com.laguna.menu.service.FoodService;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class FoodController {
   private final FoodService foodService;
 
+  @Autowired
   public FoodController(FoodService foodService) {
     this.foodService = foodService;
   }
@@ -30,6 +33,7 @@ public class FoodController {
    *
    * @return the all
    */
+  @CrossOrigin(origins = "*", allowedHeaders = "*")
   @GetMapping
   public List<FoodDto> getAll() {
     List<Food> foods = foodService.getAll();
@@ -44,6 +48,7 @@ public class FoodController {
    * @param newFood the new food
    * @return the food dto
    */
+  @CrossOrigin(origins = "*", allowedHeaders = "*")
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
   public FoodDto saveFood(@RequestBody FoodCreationDto newFood) {
