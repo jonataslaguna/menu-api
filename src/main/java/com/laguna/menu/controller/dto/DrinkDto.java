@@ -1,5 +1,6 @@
 package com.laguna.menu.controller.dto;
 
+import com.laguna.menu.entity.Drink;
 import com.laguna.menu.entity.Food;
 
 /**
@@ -12,18 +13,19 @@ public record DrinkDto(
     Double price
 ) {
 
+
   /**
    * From entity drink dto.
    *
-   * @param food the food
+   * @param drink the drink
    * @return the drink dto
    */
-  public static DrinkDto fromEntity(Food food) {
+  public static DrinkDto fromEntity(Drink drink) {
     return new DrinkDto(
-        food.getId(),
-        food.getName(),
-        food.getImageUrl(),
-        food.getPrice()
+        drink.getId(),
+        drink.getName(),
+        drink.getImageUrl(),
+        drink.getPrice()
     );
   }
 }
