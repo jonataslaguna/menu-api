@@ -4,11 +4,14 @@ import com.laguna.menu.controller.dto.FoodCreationDto;
 import com.laguna.menu.controller.dto.FoodDto;
 import com.laguna.menu.entity.Food;
 import com.laguna.menu.service.FoodService;
+import com.laguna.menu.service.exception.FoodNotFoundException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/food")
 public class FoodController {
+
   private final FoodService foodService;
 
   @Autowired
@@ -55,5 +59,12 @@ public class FoodController {
     return FoodDto.fromEntity(
         foodService.saveFood(newFood.toEntity())
     );
+  }
+
+  @DeleteMapping("/{id}")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  public void deleteFood(@PathVariable Long id) throws FoodNotFoundException {
+    Food foodToDelete = foodService.findFoodById(id);
+    foodService.deleteFood(foodToDelete);
   }
 }

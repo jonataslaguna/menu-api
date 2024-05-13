@@ -1,7 +1,7 @@
 package com.laguna.menu.service.exception;
 
 public class DrinkNotFoundException extends NotFoundException {
-  public DrinkNotFoundException(String message) {
+  public DrinkNotFoundException() {
     super("Drink not found");
   }
 }

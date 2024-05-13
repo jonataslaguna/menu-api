@@ -1,7 +1,6 @@
 package com.laguna.menu.controller.dto;
 
 import com.laguna.menu.entity.Drink;
-import com.laguna.menu.entity.Food;
 
 /**
  * The type Drink dto.

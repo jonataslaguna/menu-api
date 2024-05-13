@@ -2,6 +2,7 @@ package com.laguna.menu.service;
 
 import com.laguna.menu.entity.Food;
 import com.laguna.menu.repository.FoodRepository;
+import com.laguna.menu.service.exception.FoodNotFoundException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,14 @@ public class FoodService  {
 
   public Food saveFood(Food food) {
     return foodRepository.save(food);
+  }
+
+  public Food findFoodById(Long id) throws FoodNotFoundException {
+    return foodRepository.findById(id)
+        .orElseThrow(FoodNotFoundException::new);
+  }
+
+  public void deleteFood(Food food) {
+    foodRepository.delete(food);
   }
 }
